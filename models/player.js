@@ -1,37 +1,61 @@
-module.exports = () => class Player{
-    name:'';
-    hp:Number;
-    action:Object;
-    role:'Bard|Warlord|Warrior|Mage|Druid|Priest|Warlock|Saint|Paladin|Plut|Expediter|Charodei;
-    race:'' ;
-    level:Number;
-    exp:Number;
-    religion:"";
-    age:Number;
-    height;
-    weight;
-    eyes;
-    skin;
-    hair;
-    chars :{
-        power
-        agility
-        healthy
-        intelegence
-        mudrost
-        charsima
+module.exports = () => class Player {
+    name: '';
+    hp: Number;
+    role: 'Barbarian|Bard|Cleric|Druid|Fighter|Monk|Paladin|Ranger|Rogue|Sorcerer|Warlock|Wizard';
+    race: 'Dwarf|Elf|Halfling|Human|Dragonborn|Gnome|HalfElf|HalfOrc|Tiefling';
+    chars: {
+        strength: { // Атлетизм, сила
+            baseValue: Number;
+            modif: Number;
+        };
+        dexterity: { // Ловкость, рефлексы, балланс
+            baseValue: Number;
+            modif: Number;
+        };
+        constitution: { // Здоровье, телосложение
+            baseValue: Number;
+            modif: Number;
+        };
+        intelligence: { // Интеллект, память, способность к анализу ситуации
+            baseValue: Number;
+            modif: Number;
+        };
+        wisdom: { // Мудрость, интуиция
+            baseValue: Number;
+            modif: Number;
+        };
+        charisma: { // Уверенность, лидерство
+            baseValue: Number;
+            modif: Number;
+        };
     };
-    abbilities:[];
-    spasbroski;
-    bonusOfMastery;
-    inspiring;
-    initiate;
-    speed;
-    CD;
-    Hits;
-    boneOfCube;
-
-
+    skills: {
+        acrobatics: Number;
+        animalHanding: Number;
+        arcana: Number;
+        athletics: Number;
+        deception: Number;
+        history: Number;
+        insight: Number;
+        intimidation: Number;
+        investigation: Number;
+        medicine: Number;
+        nature: Number;
+        perception: Number;
+        performance: Number;
+        religion: Number;
+        sleightOfHand: Number;
+        stealth: Number;
+        survival: Number;
+    };
+    initiative: Number;
+    speed: Number;
+    armorClass: Number;
+    hits: {
+        current: Number;
+        maximum: Number;
+    };
+    hitDice: '';
 };
 /*
 Имя персонажа (любое имя)

@@ -1,0 +1,100 @@
+body {
+    background-color: #a3d5d3;
+}
+.width100{
+    width:95%;
+}
+.height300{
+    height: 100px;
+}
+#form1{
+    position: absolute;
+    width:310px;
+    padding:10px;
+    visibility: hidden;
+}
+#form2{
+    position: absolute;
+    width:310px;
+    padding:10px;
+    visibility: hidden;
+
+}
+#form3{
+    position: absolute;
+    width:310px;
+    padding:10px;
+    visibility: hidden;
+}
+#fight-form{
+    position: absolute;
+    width:310px;
+    padding:10px;
+    visibility: hidden;
+}
+#event-form{
+    position: absolute;
+    width:310px;
+    padding:10px;
+    visibility: hidden;
+}
+.formhead{
+    position: absolute;
+    background-color: #27A3D5;
+    color: #fff;
+    text-align:center;
+    width:310px;
+    padding:10px;
+
+}
+.formdata{
+    background-color: #107FAC;
+    width:310px;
+    padding:10px;
+
+}
+.formButton{
+    background-color: #107FAC;
+    width:107%;
+}
+form{
+    color: white;
+}
+
+
+
+
+
+
+.flat {
+    background-color: #1a7bba;
+    color: #fff;
+}
+
+.flat:hover, .outline1:hover {
+    background-color: #6ac6e2;
+    border-color: #6ac6e2;
+    color: #fff;
+}
+
+.outline {
+    background-color: #fff;
+    border: 1px solid #1a7bba;
+    color: #1a7bba;
+}
+
+.outline2:hover {
+    border-color: #6ac6e2;
+    color: #6ac6e2;
+}
+
+.flat:active, .outline1:active {
+    background: #135987;
+    border-color: #135987;
+    color: #fff;
+}
+
+.outline2:active {
+    border-color: #135987;
+    color: #135987;
+}

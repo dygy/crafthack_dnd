@@ -1,4 +1,5 @@
-const ws = new WebSocket('ws://localhost:3000');
+const host = location.origin.replace(/^http/, 'ws');
+const ws = new WebSocket(host);
 ws.onopen = () => //('ONLINE');
 ws.onclose= ()=> //('DISCONNECTED');
 ws.onmessage = response => {

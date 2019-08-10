@@ -8,10 +8,12 @@ const session = require('express-session');
 const uuid = require('uuid');
 const WebSocket = require('ws');
 const app = express();
-const player1 = require('./models/hardcoded_users/user1')
-const player2 = require('./models/hardcoded_users/user2')
-const player3 = require('./models/hardcoded_users/user3')
-const player4 = require('./models/hardcoded_users/user4')
+const player = function(id) {
+   return require('./models/hardcoded_users/user'+id)
+};
+const monster = function(id) {
+    return require('./models/hardcoded_mobs/mob'+id)
+};
 const  adminServer = new WebSocket.Server({port:3000});
 
 //
@@ -31,22 +33,27 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('./public'));
 app.use(sessionParser);
 app.set("views", path.join(__dirname, "./views"));
-app.get('/user/1',function (req, res) {
-    res.send(player1)
-});
-app.get('/user/2',function (req, res) {
-    res.send(player2)
-});
-app.get('/user/3',function (req, res) {
-    res.send(player3)
-});
-app.get('/user/4',function (req, res) {
-    res.send(player4)
-});
-
 app.get('/master', function (req, res) {
     res.sendFile(__dirname + '/public/index.html');
 });
+app.get('/',function (req, res) {
+    const id = uuid.v4();
+    console.log(`Updating session for user ${id}`);
+    req.session.userId = id;
+    res.sendFile(__dirname + '/public/login.html');
+});
+app.get('/user/1',function (req, res) {
+    res.send(player(1))});
+app.get('/user/2',function (req, res) {
+    res.send(player(2))});
+app.get('/user/3',function (req, res) {
+    res.send(player(3))});
+app.get('/user/4',function (req, res) {
+    res.send(player(4))});
+app.get(/monster/,function (req, res) {
+    const numbers = req.originalUrl.match(/\d+/g).map(Number).toString().replace(/,/g,'');
+    console.log(numbers);
+    res.send(monster(numbers))});
 app.get('/login', function (req, res) {
     const id = uuid.v4();
     console.log(`Updating session for user ${id}`);

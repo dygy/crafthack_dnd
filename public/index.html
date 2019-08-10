@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="style.css" type="text/css">
+    <link rel="stylesheet" href="styles.css" type="text/css">
 </head>
 <body>
 <button class="flat" id="form1show">Show Player 1</button>
@@ -86,19 +86,25 @@
 <div id="fight-form">
     <div class="formhead">Create Fight</div>
     <form>
-        <div class="formdata"><input class="width100" placeholder="Lol"> </div>
-        <div class="formdata"><input class="width100" placeholder="mobs id"> </div>
+        <div class="formdata"><input id="mobs" class="width100" placeholder="Lol"> </div>
+        <div class="formdata"><input id="mobs-ids" class="width100" placeholder="mobs id"> </div>
+        <div class="formdata"><input id="mobs-power" class="width100" placeholder="power"> </div>
+        <div class="formdata"><input id="mobs-dext" class="width100" placeholder="dexterity"> </div>
+        <div class="formdata"><input id="mobs-const" class="width100" placeholder="constitution"> </div>
+        <div class="formdata"><input id="mobs-int" class="width100" placeholder="intelligence"> </div>
+        <div class="formdata"><input id="mobs-wisdom" class="width100" placeholder="wisdom"> </div>
+        <div class="formdata"><input id="mobs-charisma" class="width100" placeholder="charisma"> </div>
         <button class="formButton">Submit </button>
     </form>
 </div>
 <div id="event-form">
     <div class="formhead">Create Event</div>
     <form>
-        <div class="formdata"><input class="width100" placeholder="Lol"> </div>
-        <div class="formdata"><input class="width100" placeholder="ID"> </div>
-        <div class="formdata"><input class="width100" placeholder="attributes"> </div>
-        <div class="formdata"><input class="width100" placeholder="changes"> </div>
-        <div class="formdata"><textarea class="width100 height300" placeholder="prequel"></textarea> </div>
+        <div class="formdata"><input id="event-"  class="width100" placeholder="Lol"> </div>
+        <div class="formdata"><input id="event-id" class="width100" placeholder="ID"> </div>
+        <div class="formdata"><input id="event-att" class="width100" placeholder="attributes"> </div>
+        <div class="formdata"><input id="event-change" class="width100" placeholder="changes"> </div>
+        <div class="formdata"><textarea id="event-prequel" class="width100 height300" placeholder="prequel"/> </div>
         <button class="formButton">Submit </button>
     </form>
 </div>

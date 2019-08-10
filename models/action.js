@@ -1,4 +1,4 @@
-var mod_event = require("./mod_event.js");
+let mod_event = require("./mod_event.js");
 
 module.exports = () => class Action {
     id: Number;

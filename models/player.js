@@ -1,4 +1,5 @@
 module.exports = () => class Player {
+    id: Number;
     name: '';
     hp: Number;
     role: 'Barbarian|Bard|Cleric|Druid|Fighter|Monk|Paladin|Ranger|Rogue|Sorcerer|Warlock|Wizard';

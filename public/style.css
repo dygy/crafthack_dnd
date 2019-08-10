@@ -26,6 +26,13 @@ body {
     padding:10px;
     visibility: hidden;
 }
+#form4{
+    position: absolute;
+    width:310px;
+    padding:10px;
+    visibility: hidden;
+}
+
 #fight-form{
     position: absolute;
     width:310px;

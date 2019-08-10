@@ -1,0 +1,59 @@
+{
+  "id": 4,
+  "name": "Dan the Cleric",
+  "role": "Cleric",
+  "race": "Gnome",
+  "chars": {
+    "strength": {
+      "baseValue": 8,
+      "modif": -1
+    },
+    "dexterity": {
+      "baseValue": 9,
+      "modif": -1
+    },
+    "constitution": {
+      "baseValue": 8,
+      "modif": -1
+    },
+    "intelligence": {
+      "baseValue": 10,
+      "modif": 0
+    },
+    "wisdom": {
+      "baseValue": 8,
+      "modif": -1
+    },
+    "charisma": {
+      "baseValue": 8,
+      "modif": -1
+    }
+  },
+  "skills": {
+    "acrobatics": -1,
+    "animalHanding": -1,
+    "arcana": 0,
+    "athletics": -1,
+    "deception": -1,
+    "history": 0,
+    "insight": 1,
+    "intimidation": -1,
+    "investigation": 0,
+    "medicine": -1,
+    "nature": 0,
+    "perception": -1,
+    "performance": -1,
+    "religion": 2,
+    "sleightOfHand": -1,
+    "stealth": -1,
+    "survival": -1
+  },
+  "initiative": -1,
+  "speed": 25,
+  "armorClass": 15,
+  "hits": {
+    "current": 7,
+    "maximum":71
+  },
+  "hitDice": "1d8"
+}

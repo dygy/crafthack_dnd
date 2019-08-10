@@ -1,0 +1,59 @@
+{
+  "id": 3,
+  "name": "Nika the Fastest",
+  "role": "Barbarian",
+  "race": "Elf",
+  "chars": {
+    "strength": {
+      "baseValue": 8,
+      "modif": -1
+    },
+    "dexterity": {
+      "baseValue": 10,
+      "modif": 0
+    },
+    "constitution": {
+      "baseValue": 8,
+      "modif": -1
+    },
+    "intelligence": {
+      "baseValue": 8,
+      "modif": -1
+    },
+    "wisdom": {
+      "baseValue": 8,
+      "modif": -1
+    },
+    "charisma": {
+      "baseValue": 9,
+      "modif": -1
+    }
+  },
+  "skills": {
+    "acrobatics": 0,
+    "animalHanding": -1,
+    "arcana": -1,
+    "athletics": -1,
+    "deception": -1,
+    "history": -1,
+    "insight": 1,
+    "intimidation": -1,
+    "investigation": -1,
+    "medicine": -1,
+    "nature": -1,
+    "perception": 1,
+    "performance": -1,
+    "religion": 1,
+    "sleightOfHand": 0,
+    "stealth": 0,
+    "survival": -1
+  },
+  "initiative": 0,
+  "speed": 30,
+  "armorClass": 9,
+  "hits": {
+    "current": 11,
+    "maximum": 11
+  },
+  "hitDice": "1d12"
+}

@@ -1,0 +1,59 @@
+{
+  "id": 1,
+  "name": "Oleg the Greatest",
+  "role": "Fighter",
+  "race": "Dwarf",
+  "chars": {
+    "strength": {
+      "baseValue": 16,
+      "modif": 3
+    },
+    "dexterity": {
+      "baseValue": 14,
+      "modif": 2
+    },
+    "constitution": {
+      "baseValue": 15,
+      "modif": 2
+    },
+    "intelligence": {
+      "baseValue": 12,
+      "modif": 1
+    },
+    "wisdom": {
+      "baseValue": 10,
+      "modif": 0
+    },
+    "charisma": {
+      "baseValue": 8,
+      "modif": -1
+    }
+  },
+  "skills": {
+    "acrobatics": 4,
+    "animalHanding": 0,
+    "arcana": 0,
+    "athletics": 5,
+    "deception": 1,
+    "history": 1,
+    "insight": 0,
+    "intimidation": -1,
+    "investigation": 1,
+    "medicine": 0,
+    "nature": 1,
+    "perception": 0,
+    "performance": -1,
+    "religion": 1,
+    "sleightOfHand": 2,
+    "stealth": 4,
+    "survival": 0
+  },
+  "initiative": 2,
+  "speed": 25,
+  "armorClass": 17,
+  "hits": {
+    "current": 12,
+    "maximum": 12
+  },
+  "hitDice": "1d10"
+}

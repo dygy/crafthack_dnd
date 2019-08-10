@@ -1,5 +1,5 @@
 'use strict';
-const path = require("path")
+const path = require("path");
 const bodyParser = require('body-parser');
 const express = require('express');
 const http = require('http');
@@ -95,6 +95,4 @@ wss.on('connection', function (ws, request) {
 // Start the server.
 //
 
-server.listen(8080, function () {
-    console.log('Listening on http://localhost:8080');
-});
+server.listen(process.env.PORT || 5000,'0.0.0.0', () => console.log('Example app listening on port 5000!'));

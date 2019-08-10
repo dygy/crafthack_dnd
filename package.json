@@ -9,6 +9,7 @@
     "body-parser": "latest"
   },
   "scripts": {
-    "start": "node index"
+    "start": "node index",
+    "http": "http-server"
   }
 }

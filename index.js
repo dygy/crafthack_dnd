@@ -25,14 +25,14 @@ const sessionParser = session({
 //
 app.use(express.static('public'));
 app.use(sessionParser);
-app.get('/login', function(req, res) {
+app.get('/login', function (req, res) {
     const id = uuid.v4();
 
     console.log(`Updating session for user ${id}`);
     req.session.userId = id;
-    res.send({ result: 'OK', message: 'Session updated' });
+    res.send({result: 'OK', message: 'Session updated'});
 });
-app.post('/login', function(req, res) {
+app.post('/login', function (req, res) {
     //
     // "Log in" user and set userId to session.
     //
@@ -40,13 +40,13 @@ app.post('/login', function(req, res) {
 
     console.log(`Updating session for user ${id}`);
     req.session.userId = id;
-    res.send({ result: 'OK', message: 'Session updated' });
+    res.send({result: 'OK', message: 'Session updated'});
 });
 
-app.delete('/logout', function(request, response) {
+app.delete('/logout', function (request, response) {
     console.log('Destroying session');
-    request.session.destroy(function() {
-        response.send({ result: 'OK', message: 'Session destroyed' });
+    request.session.destroy(function () {
+        response.send({result: 'OK', message: 'Session destroyed'});
     });
 });
 
@@ -55,9 +55,9 @@ app.delete('/logout', function(request, response) {
 //
 
 const server = http.createServer(app);
-const wss = new WebSocket.Server({ noServer: true });
+const wss = new WebSocket.Server({noServer: true});
 
-server.on('upgrade', function(request, socket, head) {
+server.on('upgrade', function (request, socket, head) {
     console.log('Parsing session from request...');
 
     sessionParser(request, {}, () => {
@@ -68,14 +68,14 @@ server.on('upgrade', function(request, socket, head) {
 
         console.log('Session is parsed!');
 
-        wss.handleUpgrade(request, socket, head, function(ws) {
+        wss.handleUpgrade(request, socket, head, function (ws) {
             wss.emit('connection', ws, request);
         });
     });
 });
 
-wss.on('connection', function(ws, request) {
-    ws.on('message', function(message) {
+wss.on('connection', function (ws, request) {
+    ws.on('message', function (message) {
         //
         // Here we can now use session parameters.
         //
@@ -89,6 +89,6 @@ wss.on('connection', function(ws, request) {
 // Start the server.
 //
 
-server.listen(8080, function() {
+server.listen(8080, function () {
     console.log('Listening on http://localhost:8080');
 });

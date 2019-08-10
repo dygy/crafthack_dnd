@@ -7,10 +7,10 @@ app.use(cookieParser);
 app.use(express.session({store: sessionStore}));
 
 
-wss.on('connection', function(rawSocket) {
-    cookieParser(rawSocket.upgradeReq, null, function(err) {
+wss.on('connection', function (rawSocket) {
+    cookieParser(rawSocket.upgradeReq, null, function (err) {
         let sessionID = rawSocket.upgradeReq.signedCookies['connect.sid'];
-        sessionStore.get(sessionID, function(err, sess) {
+        sessionStore.get(sessionID, function (err, sess) {
             console.log(sess);
         });
     });

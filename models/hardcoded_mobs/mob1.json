@@ -1,0 +1,9 @@
+{
+  "dangerLevel": 0.25,
+  "materBonus": 2,
+  "armorClass": 13,
+  "hits": 37,
+  "attackBonus": 3,
+  "roundDamage": 5,
+  "saverollPower": 13
+}

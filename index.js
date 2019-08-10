@@ -1,11 +1,10 @@
 'use strict';
+const path = require("path")
+const bodyParser = require('body-parser');
 const express = require('express');
 const http = require('http');
-
-
 const session = require('express-session');
 const uuid = require('uuid');
-
 const WebSocket = require('ws');
 
 const app = express();
@@ -14,6 +13,10 @@ const app = express();
 // We need the same instance of the session parser in express and
 // WebSocket server.
 //
+global.base_dir = __dirname;
+global.abs_path = function(path) {
+    return base_dir + path;
+};
 const sessionParser = session({
     saveUninitialized: false,
     secret: '$eCuRiTy',
@@ -23,11 +26,16 @@ const sessionParser = session({
 //
 // Serve static files from the 'public' folder.
 //
-app.use(express.static('public'));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static('./public'));
 app.use(sessionParser);
+app.set("views", path.join(__dirname, "./views"));
+
+app.get('/master', function (req, res) {
+    res.sendFile(__dirname + '/public/index.html');
+});
 app.get('/login', function (req, res) {
     const id = uuid.v4();
-
     console.log(`Updating session for user ${id}`);
     req.session.userId = id;
     res.send({result: 'OK', message: 'Session updated'});

@@ -56,6 +56,7 @@ module.exports = () => class Player {
         maximum: Number;
     };
     hitDice: '';
+    bio: '';
 };
 /*
 Имя персонажа (любое имя)

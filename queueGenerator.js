@@ -1,5 +1,5 @@
 module.exports = () => function (array) {
-    // там слегка ебанутая механика, и у нас нет данных по монстрам, будет так
+    // там слегка ебанутая механика, и у нас нет данных по монстрам, будет так1
     let currentIndex = array.length, temporaryValue, randomIndex;
 
     // While there remain elements to shuffle...

@@ -106,10 +106,10 @@ function fetching(url) {
 }
 function replace(item,id) {
     console.log(item.chars);
-    elem('ID'+id).innerText='ID: '+item.id
-    elem('Name'+id).innerText='Name: '+item.name
-    elem('Role'+id).innerText='Role: '+item.role
-    elem('Race'+id).innerText='Race: '+item.race
+    elem('ID'+id).innerText='ID: '+item.id;
+    elem('Name'+id).innerText='Name: '+item.name;
+    elem('Role'+id).innerText='Role: '+item.role;
+    elem('Race'+id).innerText='Race: '+item.race;
     elem('Chars'+id).innerHTML=
         '<strong>Chars: </strong>'+'</br>' +
         '<div>Strength:'+JSON.stringify(item.chars.strength).noJSON()+'</div>'+ '</br>'+
@@ -117,11 +117,11 @@ function replace(item,id) {
         '<div>Intelligence:'+JSON.stringify(item.chars.intelligence).noJSON()+'</div>'+ '</br>'+
     '<div>Dexterity:'+JSON.stringify(item.chars.dexterity).noJSON()+'</div>'+ '</br>'+
     '<div>Wisdom:'+JSON.stringify(item.chars.wisdom).noJSON()+'</div>'+ '</br>'+
-    '<div>Charsima:'+JSON.stringify(item.chars.charisma).noJSON()+'</div>'+ '</br>';
+    '<div>Charsima:'+JSON.stringify(item.chars.charisma).noJSON()+'</div>';
     elem('ArmorClass'+id).innerText='Armor Class: '+item.armorClass
     elem('HitDice'+id).innerText='Hit Dice : '+item.hitDice
     elem('Hits'+id).innerHTML='<Strong>Hit: </Strong>'
-        +item.hits
+        +'min '+item.hits.current +' max ' +item.hits.maximum
     elem('Initiative'+id).innerText='Initiative: '+item.initiative
     elem('Skills'+id).innerText='Skills: '+item.skills.toString();
     elem('Speed'+id).innerText='Speed: '+item.speed
@@ -129,7 +129,7 @@ function replace(item,id) {
 }
 
 String.prototype.noJSON = function () {
-    let str = this.replace(/\"/g,'')
-    str=str.replace(/\{/g,'')
+    let str = this.replace(/\"/g,'');
+    str=str.replace(/\{/g,'');
     return str.replace(/\}/g,'')
 }

@@ -41,7 +41,7 @@ app.get('/user/3',function (req, res) {
 });
 app.get('/user/4',function (req, res) {
     res.send(player4)
-})
+});
 
 app.get('/master', function (req, res) {
     res.sendFile(__dirname + '/public/index.html');
@@ -52,7 +52,6 @@ app.get('/login', function (req, res) {
     req.session.userId = id;
     res.send({result: 'OK', message: 'Session updated'});
 });
-
 app.delete('/logout', function (request, response) {
     console.log('Destroying session');
     request.session.destroy(function () {
@@ -60,9 +59,7 @@ app.delete('/logout', function (request, response) {
     });
 });
 
-//
 // Create HTTP server by ourselves.
-//
 
 const server = http.createServer(app);
 const wss = new WebSocket.Server({noServer: true});
@@ -70,11 +67,12 @@ const wss = new WebSocket.Server({noServer: true});
 server.on('upgrade', function (request, socket, head) {
     console.log('Parsing session from request...');
     sessionParser(request, {}, () => {
+        /*
         if (!request.session.userId) {
             socket.destroy();
             return;
         }
-
+        */
         console.log('Session is parsed!');
         wss.handleUpgrade(request, socket, head, function (ws) {
             wss.emit('connection', ws, request);

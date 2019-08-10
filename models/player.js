@@ -1,7 +1,6 @@
 module.exports = () => class Player {
     id: Number;
     name: '';
-    hp: Number;
     role: 'Barbarian|Bard|Cleric|Druid|Fighter|Monk|Paladin|Ranger|Rogue|Sorcerer|Warlock|Wizard';
     race: 'Dwarf|Elf|Halfling|Human|Dragonborn|Gnome|HalfElf|HalfOrc|Tiefling';
     chars: {

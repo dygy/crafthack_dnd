@@ -1,9 +1,10 @@
-const host = location.origin.replace(/^http/, 'ws');
+const host = location.origin.replace(/^http/, 'ws').replace(5000,'')+'8080';
 const ws = new WebSocket(host);
+alert(host);
 ws.onopen = () => //('ONLINE');
 ws.onclose= ()=> //('DISCONNECTED');
 ws.onmessage = response => {
-    //resposne.data
+  console.log(response)
 };
 
 function elem (id){
@@ -15,7 +16,6 @@ function hide(id) {
 function show (id) {
     elem(id).style.visibility = visible;
     console.log(elem(id).style.visibility);
-
 };
 
 const visible = 'visible';
@@ -55,7 +55,7 @@ elem('form4show').onclick=function(){
     hide('fight-form');
 };
 
-elem('fight-form').onclick=function(){
+elem('createEvent').onclick=function(){
     hide   ('form3');
     hide   ('form1');
     hide   ('form2');
@@ -123,10 +123,10 @@ function replace(item,id) {
     elem('HitDice'+id).innerText='Hit Dice : '+item.hitDice
     elem('Hits'+id).innerHTML='<Strong>Hit: </Strong>'
         +'min '+item.hits.current +' max ' +item.hits.maximum
-    elem('Initiative'+id).innerText='Initiative: '+item.initiative
+    elem('Initiative'+id).innerText='Initiative: '+item.initiative;
     elem('Skills'+id).innerText='Skills: '+item.skills.toString();
-    elem('Speed'+id).innerText='Speed: '+item.speed
-    //elem('Biography'+id).innerText='Biography: '+item.biography
+    elem('Speed'+id).innerText='Speed: '+item.speed;
+    elem('Biography'+id).innerText='Biography: '+item.bio
 }
 
 String.prototype.noJSON = function () {

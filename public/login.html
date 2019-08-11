@@ -6,5 +6,12 @@
 </head>
 <body>
 <h1>logging</h1>
+<script>
+    const host = location.origin.replace(/^http/, 'ws').replace(5000,'')+'8080';
+    const ws = new WebSocket(host);
+    ws.onopen = () => alert('ONLINE');
+    ws.onclose= ()=> alert('DISCONNECTED');
+    ws.onmessage = response => alert(response.data);
+</script>
 </body>
 </html>

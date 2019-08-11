@@ -15,24 +15,20 @@ const monster = function(id) {
     return require('./models/hardcoded_mobs/mob'+id)
 };
 const  adminServer = new WebSocket.Server({port:3000});
-
+let players = 1;
 //
 // We need the same instance of the session parser in express and
 // WebSocket server.
 //
-const sessionParser = session({
-    saveUninitialized: false,
-    secret: '$eCuRiTy',
-    resave: false
-});
+app.use(session({secret: 'keyboard cat', resave: false, saveUninitialized: true}))
 
 //
 // Serve static files from the 'public' folder.
 //
 app.use(bodyParser.urlencoded({ extended: true }));
+app.set("public", path.join(__dirname, "./public"));
 app.use(express.static('./public'));
-app.use(sessionParser);
-app.set("views", path.join(__dirname, "./views"));
+
 app.get('/master', function (req, res) {
     res.sendFile(__dirname + '/public/index.html');
 });
@@ -55,10 +51,10 @@ app.get(/monster/,function (req, res) {
     console.log(numbers);
     res.send(monster(numbers))});
 app.get('/login', function (req, res) {
-    const id = uuid.v4();
-    console.log(`Updating session for user ${id}`);
-    req.session.userId = id;
-    res.send({result: 'OK', message: 'Session updated'});
+    res.sendFile(__dirname + '/public/login.html');
+});
+app.get('/update', function (req, res) {
+    res.send('Session '+res.session);
 });
 app.delete('/logout', function (request, response) {
     console.log('Destroying session');
@@ -67,39 +63,38 @@ app.delete('/logout', function (request, response) {
     });
 });
 
-// Create HTTP server by ourselves.
 
-const server = http.createServer(app);
-const wss = new WebSocket.Server({noServer: true});
+/**
+ * WebSocket server
+ */
+const WebSocketServer = require('ws').Server,
+    wss = new WebSocketServer({port: 8080}),
+    CLIENTS = [];
+    let admin;
 
-server.on('upgrade', function (request, socket, head) {
-    console.log('Parsing session from request...');
-    sessionParser(request, {}, () => {
-        /*
-        if (!request.session.userId) {
-            socket.destroy();
-            return;
-        }
-        */
-        console.log('Session is parsed!');
-        wss.handleUpgrade(request, socket, head, function (ws) {
-            wss.emit('connection', ws, request);
-        });
+wss.on('connection', function(ws) {
+
+    if (CLIENTS.length===1){
+        admin = ws
+        ws.send('you are admin')
+    }
+    else {
+        CLIENTS.push(ws);
+        ws.send('you are player number'+ CLIENTS.length)
+    }
+    ws.on('message', function(message) {
+        console.log('received: %s', message);
+        sendToClients(message);
     });
+    ws.send("NEW USER JOINED");
 });
 
-wss.on('connection', function (ws, request) {
-    ws.on('message', function (message) {
-        //
-        // Here we can now use session parameters.
-        //
-        console.log(
-            `Received message ${message} from user ${request.session.userId}`
-        );
-    });
-});
-
-//
-// Start the server.
-//
+function sendToClients (message) {
+    for (let i=0; i<CLIENTS.length; i++) {
+        CLIENTS[i].send("Message: " + message);
+    }
+}
+function sendToAdmin (message) {
+        admin.send("Message: " + message);
+}
 app.listen(process.env.PORT || 5000,'0.0.0.0', () => console.log('Example app listening on port 5000!'));

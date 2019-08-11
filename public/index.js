@@ -93,7 +93,7 @@ elem('hideall').onclick=function(){
 fetching('https://crafthack.herokuapp.com/user/1');
 fetching('https://crafthack.herokuapp.com/user/2');
 fetching('https://crafthack.herokuapp.com/user/3');
-fetching('/https://crafthack.herokuapp.com/user/4');
+fetching('https://crafthack.herokuapp.com/user/4');
 
 function fetching(url) {
      fetch(url)

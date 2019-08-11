@@ -66,6 +66,19 @@ const WebSocketServer = require('ws').Server,
     wss = new WebSocketServer({server: server});
     const CLIENTS=[];
     let admin;
+setInterval=(()=> {
+    wss.clients.forEach((client) => {
+        client.send(new Date().toTimeString())
+    })
+},2000);
+
+
+
+
+
+
+
+
 
 wss.on('connection', function(ws) {
     console.log(CLIENTS);

@@ -136,14 +136,16 @@ String.prototype.noJSON = function () {
     str=str.replace(/\{/g,'');
     return str.replace(/\}/g,'')
 };
-function sendOver() {
+function sendOver(Event) {
+    Event.preventDefault()
     let turn = {
         type:'pass',
         body:''
     };
     ws.send(JSON.stringify(turn))
 }
-function sendFight() {
+function sendFight(Event) {
+    Event.preventDefault()
     const fight = {
             type: 'begin_battle',
             body: {
@@ -152,7 +154,8 @@ function sendFight() {
         };
     ws.send(JSON.stringify(fight));
 }
-function sendEvent() {
+function sendEvent(Event) {
+    Event.preventDefault()
     const event = {
             type: 'hit_event',
             body: {

@@ -58,7 +58,6 @@
 
 <div id="form3">
     <div class="formhead">Player 3</div>
-    <form>
         <div class="formdata"><div class="width100" >Hello    </div> </div>
         <div class="formdata"><strong class="width100" id="ID3" >ID  </strong> </div>
         <div class="formdata"><strong class="width100" id="Name3" >Name  </strong> </div>
@@ -72,11 +71,9 @@
         <div class="formdata"><div class="width100" id="Hits3">Hits </div> </div>
         <div class="formdata"><strong class="width100" id="HitDice3">Hit Dice </strong> </div>
         <div class="formdata"><strong class="width100" id="Biography3">Biography </strong> </div>
-    </form>
 </div>
 <div id="form4">
     <div class="formhead">Player 4</div>
-    <form>
         <div class="formdata"><div class="width100" >Hello    </div> </div>
         <div class="formdata"><strong class="width100" id="ID4" >ID  </strong> </div>
         <div class="formdata"><strong class="width100" id="Name4" >Name  </strong> </div>
@@ -90,17 +87,14 @@
         <div class="formdata"><div class="width100" id="Hits4">Hits </div> </div>
         <div class="formdata"><strong class="width100" id="HitDice4">Hit Dice </strong> </div>
         <div class="formdata"><strong class="width100" id="Biography4">Biography </strong> </div>
-    </form>
 </div>
 
 
 <div id="fight-form">
     <div class="formhead">Create Fight</div>
-    <form>
         <div class="formdata"><input id="mobs" class="width100" placeholder="Lol"> </div>
         <div class="formdata"><input id="mobs-ids" class="width100" placeholder="mobs id"> </div>
-        <div class="formButton" onclick="sendFight()">Submit </div>
-    </form>
+        <button class="formButton"  onclick="sendEvent()">Submit </button>
 </div>
 <div id="event-form">
     <div class="formhead">Create Event </div>
@@ -109,7 +103,7 @@
         <div class="formdata"><input id="hits-id" class="width100" placeholder="ID"> </div>
         <div class="formdata"><input id="hits-change" class="width100" placeholder="changes"> </div>
         <div class="formdata"><textarea id="hits-prequel" class="width100 height300" placeholder="prequel"/></textarea>  </div>
-        <div class="formButton"  onclick="sendEvent()">Submit </div>
+        <button class="formButton"  onclick="sendEvent()">Submit </button>
     </form>
 </div>
 

@@ -1,4 +1,4 @@
-const host = location.origin.replace(/^http/, 'ws')+'/websocket';
+const host = location.origin.replace(/^http/, 'ws');
 const ws = new WebSocket(host);
 ws.onopen = () => alert('ONLINE');
 ws.onclose= ()=> alert('DISCONNECTED');

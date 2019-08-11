@@ -66,7 +66,6 @@ const WebSocketServer = require('ws').Server,
     wss = new WebSocketServer({server: server});
     const CLIENTS=[];
     let admin;
-app.get('/websocket', function (req, res) {
 
 wss.on('connection', function(ws) {
     console.log(CLIENTS);
@@ -130,8 +129,6 @@ wss.on('connection', function(ws) {
             }
         console.log('received: %s', message);
     });
-});
-
 });
 
 function sendToClients (message) {

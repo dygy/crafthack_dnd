@@ -90,10 +90,10 @@ elem('hideall').onclick=function(){
     hide('fight-form');
 };
 
-fetching('http://www.crafthack.herokuapp.com/user/1');
-fetching('http://www.crafthack.herokuapp.com/user/2');
-fetching('http://www.crafthack.herokuapp.com/user/3');
-fetching('http://www.crafthack.herokuapp.com/user/4');
+fetching('https://www.crafthack.herokuapp.com/user/1');
+fetching('https://www.crafthack.herokuapp.com/user/2');
+fetching('https://www.crafthack.herokuapp.com/user/3');
+fetching('https://www.crafthack.herokuapp.com/user/4');
 
 function fetching(url) {
      fetch(url)

@@ -16,6 +16,7 @@ const monster = function(id) {
 };
 const  adminServer = new WebSocket.Server({port:3000});
 let players = 1;
+const server = http.createServer(app);
 //
 // We need the same instance of the session parser in express and
 // WebSocket server.
@@ -68,19 +69,25 @@ app.delete('/logout', function (request, response) {
  * WebSocket server
  */
 const WebSocketServer = require('ws').Server,
-    wss = new WebSocketServer({port: 8080}),
-    CLIENTS = [];
+    wss = new WebSocketServer({server: server});
+    const CLIENTS=[];
     let admin;
 
 wss.on('connection', function(ws) {
-
-    if (CLIENTS.length===1){
-        admin = ws
+    console.log(CLIENTS);
+    if (CLIENTS.length===0){
+        CLIENTS.push(ws);
+        admin = ws;
         ws.send('you are admin')
     }
     else {
         CLIENTS.push(ws);
-        ws.send('you are player number'+ CLIENTS.length)
+        if (CLIENTS.length<5) {
+            ws.send('you are player number ' + CLIENTS.length - 1)
+        }
+        else {
+            ws.send('session already have players')
+        }
     }
     ws.on('message', function(message) {
         console.log('received: %s', message);
@@ -97,4 +104,4 @@ function sendToClients (message) {
 function sendToAdmin (message) {
         admin.send("Message: " + message);
 }
-app.listen(process.env.PORT || 5000,'0.0.0.0', () => console.log('Example app listening on port 5000!'));
+server.listen(process.env.PORT || 5000,'0.0.0.0', () => console.log('Example app listening on port 5000!'));

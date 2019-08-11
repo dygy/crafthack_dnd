@@ -7,7 +7,7 @@
 <body>
 <h1>logging</h1>
 <script>
-    const host = location.origin.replace(/^http/, 'ws').replace(5000,'')+'8080';
+    const host = location.origin.replace(/^http/, 'ws');
     const ws = new WebSocket(host);
     ws.onopen = () => alert('ONLINE');
     ws.onclose= ()=> alert('DISCONNECTED');

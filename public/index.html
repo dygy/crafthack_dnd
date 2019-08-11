@@ -13,6 +13,7 @@
 <button class="flat" id="createFight">Create Fight</button>
 <button class="flat" id="createEvent">Create Event</button>
 <button class="flat" id="hideall">Hide All</button>
+<button class="flat" id="endturn" onclick="sendOver()">Over Turn</button>
 <script src="./index.js"></script>
 
 <div id="form1">
@@ -103,7 +104,7 @@
         <div class="formdata"><input id="mobs-int" class="width100" placeholder="intelligence"> </div>
         <div class="formdata"><input id="mobs-wisdom" class="width100" placeholder="wisdom"> </div>
         <div class="formdata"><input id="mobs-charisma" class="width100" placeholder="charisma"> </div>
-        <button class="formButton">Submit </button>
+        <button class="formButton" onclick="sendFight()">Submit </button>
     </form>
 </div>
 <div id="event-form">
@@ -114,7 +115,7 @@
         <div class="formdata"><input id="event-att" class="width100" placeholder="attributes"> </div>
         <div class="formdata"><input id="event-change" class="width100" placeholder="changes"> </div>
         <div class="formdata"><textarea id="event-prequel" class="width100 height300" placeholder="prequel"/></textarea>  </div>
-        <button class="formButton">Submit </button>
+        <button class="formButton"  onclick="sendEvent()">Submit </button>
     </form>
 </div>
 

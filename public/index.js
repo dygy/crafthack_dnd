@@ -1,11 +1,8 @@
-const host = location.origin.replace(/^http/, 'ws').replace(5000,'')+'8080';
+const host = location.origin.replace(/^http/, 'ws');
 const ws = new WebSocket(host);
-alert(host);
-ws.onopen = () => //('ONLINE');
-ws.onclose= ()=> //('DISCONNECTED');
-ws.onmessage = response => {
-  console.log(response)
-};
+ws.onopen = () => alert('ONLINE');
+ws.onclose= ()=> alert('DISCONNECTED');
+ws.onmessage = response => alert(response.data);
 
 function elem (id){
     return document.getElementById(id)
@@ -119,10 +116,10 @@ function replace(item,id) {
     '<div>Dexterity:'+JSON.stringify(item.chars.dexterity).noJSON()+'</div>'+ '</br>'+
     '<div>Wisdom:'+JSON.stringify(item.chars.wisdom).noJSON()+'</div>'+ '</br>'+
     '<div>Charsima:'+JSON.stringify(item.chars.charisma).noJSON()+'</div>';
-    elem('ArmorClass'+id).innerText='Armor Class: '+item.armorClass
-    elem('HitDice'+id).innerText='Hit Dice : '+item.hitDice
+    elem('ArmorClass'+id).innerText='Armor Class: '+item.armorClass;
+    elem('HitDice'+id).innerText='Hit Dice : '+item.hitDice;
     elem('Hits'+id).innerHTML='<Strong>Hit: </Strong>'
-        +'min '+item.hits.current +' max ' +item.hits.maximum
+        +'min '+item.hits.current +' max ' +item.hits.maximum;
     elem('Initiative'+id).innerText='Initiative: '+item.initiative;
     elem('Skills'+id).innerText='Skills: '+item.skills.toString();
     elem('Speed'+id).innerText='Speed: '+item.speed;
@@ -133,4 +130,54 @@ String.prototype.noJSON = function () {
     let str = this.replace(/\"/g,'');
     str=str.replace(/\{/g,'');
     return str.replace(/\}/g,'')
+};
+function sendOver() {
+    let turn = {
+        type:'turn',
+        body:''
+
+    };
+    ws.send(JSON.stringify(turn))
+}
+function sendFight() {
+    const fight = {
+            type: 'begin_battle',
+            body: {
+                mobsID: elem('mobs-ids').value.split(','),
+                power: elem('mobs-power').value.split(','),
+                dexterity: elem('mobs-dext').value.split(','),
+                constitution: elem('mobs-const').value.split(','),
+                intelligence: elem('mobs-int').value.split(','),
+                wisdom: elem('mobs-wisdom').value.split(','),
+                charisma: elem('mobs-charisma').value.split(','),
+            }
+        };
+
+    ws.send(JSON.stringify(fight));
+}
+function sendEvent() {
+    let event;
+    if (/hit/.test(elem('event-att').value) ) {
+        event = {
+            type: 'hits_event',
+            body: {
+                playerID: elem('event-id').value,
+                attributes: elem('event-att').value.split(','),
+                changes: elem('event-change').value.split(','),
+                prequel: elem('event-prequel').value
+                }
+            }
+        }
+        else{
+            event=  {
+                type:'mod_event',
+                body:{
+                    playerID:elem('event-id').value,
+                    attributes:elem('event-att').value.split(','),
+                    changes:elem('event-change').value.split(','),
+                    prequel:elem('event-prequel').value
+                }
+            }
+        }
+    ws.send(JSON.stringify(event))
 }

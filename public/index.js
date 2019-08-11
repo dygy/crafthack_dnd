@@ -150,7 +150,6 @@ function sendFight() {
                 mobsID: elem('mobs-ids').value.split(','),
             }
         };
-
     ws.send(JSON.stringify(fight));
 }
 function sendEvent() {

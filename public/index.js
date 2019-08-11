@@ -2,19 +2,25 @@ const host = location.origin.replace(/^http/, 'ws');
 const ws = new WebSocket(host);
 ws.onopen = () => alert('ONLINE');
 ws.onclose= ()=> alert('DISCONNECTED');
-ws.onmessage = response => alert(response.data);
-
+ws.onmessage = response =>{
+    const obj = JSON.parse(response.data)
+    if (obj.type ==='turn'){
+      alert('You can make your turn')
+    }
+}
+function gameOver() {
+    ws.send('kill')
+}
 function elem (id){
     return document.getElementById(id)
 }
 function hide(id) {
     elem(id).style.visibility = hidden
-};
+}
 function show (id) {
     elem(id).style.visibility = visible;
     console.log(elem(id).style.visibility);
-};
-
+}
 const visible = 'visible';
 const hidden = 'hidden';
 elem("form1show").onclick=function(){
@@ -80,18 +86,17 @@ elem('hideall').onclick=function(){
     hide   ('form1');
     hide   ('form2');
     hide   ('form4');
-
     hide('event-form');
     hide('fight-form');
 };
 
-fetching('user/1');
-fetching('user/2');
-fetching('user/3');
-fetching('user/4');
+fetching('http://www.crafthack.herokuapp.com/user/1');
+fetching('http://www.crafthack.herokuapp.com/user/2');
+fetching('http://www.crafthack.herokuapp.com/user/3');
+fetching('http://www.crafthack.herokuapp.com/user/4');
 
 function fetching(url) {
-     fetch("/"+url)
+     fetch(url)
         .then(response=>{
             return response.json()
         })
@@ -133,9 +138,8 @@ String.prototype.noJSON = function () {
 };
 function sendOver() {
     let turn = {
-        type:'turn',
+        type:'pass',
         body:''
-
     };
     ws.send(JSON.stringify(turn))
 }
@@ -144,40 +148,19 @@ function sendFight() {
             type: 'begin_battle',
             body: {
                 mobsID: elem('mobs-ids').value.split(','),
-                power: elem('mobs-power').value.split(','),
-                dexterity: elem('mobs-dext').value.split(','),
-                constitution: elem('mobs-const').value.split(','),
-                intelligence: elem('mobs-int').value.split(','),
-                wisdom: elem('mobs-wisdom').value.split(','),
-                charisma: elem('mobs-charisma').value.split(','),
             }
         };
 
     ws.send(JSON.stringify(fight));
 }
 function sendEvent() {
-    let event;
-    if (/hit/.test(elem('event-att').value) ) {
-        event = {
-            type: 'hits_event',
+    const event = {
+            type: 'hit_event',
             body: {
-                playerID: elem('event-id').value,
-                attributes: elem('event-att').value.split(','),
-                changes: elem('event-change').value.split(','),
-                prequel: elem('event-prequel').value
+                playerID: elem('hits-id').value,
+                changes: elem('hits-change').value,
+                prequel: elem('hits-prequel').value
                 }
-            }
-        }
-        else{
-            event=  {
-                type:'mod_event',
-                body:{
-                    playerID:elem('event-id').value,
-                    attributes:elem('event-att').value.split(','),
-                    changes:elem('event-change').value.split(','),
-                    prequel:elem('event-prequel').value
-                }
-            }
-        }
+        };
     ws.send(JSON.stringify(event))
 }

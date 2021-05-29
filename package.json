@@ -5,7 +5,7 @@
     "express": "latest",
     "express-session": "^1.16.2",
     "uuid": "^3.3.2",
-    "ws": "^7.1.1",
+    "ws": "^7.4.6",
     "body-parser": "latest"
   },
   "scripts": {
